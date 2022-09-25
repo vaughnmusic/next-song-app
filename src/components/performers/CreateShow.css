@@ -1,0 +1,102 @@
+h2 {
+    text-align: center;
+    color: #cad3fc;
+    font-size: 32pt;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.create-show-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: #19151f;
+
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+
+
+.playlist-container {
+    border: solid 3px #b08efb;
+    background-color: #cad3fc;
+
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+
+    height: 20rem;
+    width: 25rem;
+
+    text-align: center;
+
+
+
+
+    overflow-y: auto;
+
+    font-size: 16pt;
+}
+
+.create-show-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+
+    width: 23rem;
+    height: 20rem;
+}
+
+.input-field {
+    height: 22pt;
+    width: 20rem;
+
+    background-color: #cad3fc;
+    font-size: 16pt;
+
+    padding: 10px;
+
+    border-radius: 5px;
+    margin-bottom: 20px;
+
+}
+
+.create-show-button {
+
+    bottom: 14px;
+    width: 50%;
+    height: 45px;
+
+
+
+    background-color: #cad3fc;
+    font-size: 16pt;
+
+    font-family: 'Red Hat Display', sans-serif;
+
+    border-radius: 5px;
+}
+
+.create-show-button:hover {
+
+    background-color: #b08efb;
+    cursor: pointer;
+}
+
+
+/* use and change to style selected playlists */
+.create-show-form .playlists {
+    user-select: none;
+    cursor: pointer;
+}
+
+.create-show-form .playlists:hover:not(.selected) {
+    background-color: #abb6ea;
+}
+
+.create-show-form .playlists.selected {
+    background-color: #b08efb;
+}

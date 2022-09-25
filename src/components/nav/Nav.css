@@ -1,0 +1,66 @@
+/* sidebar Nav -- cant get to render on app????*/
+nav {
+    position: relative;
+}
+
+button.burger {
+    position: fixed;
+    left: 16px;
+    top: 20px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+nav {
+    overflow-y: scroll;
+
+    position: fixed;
+    top: 0;
+    background: #19151f;
+    left: 0;
+    bottom: 0;
+    /* height: 100vh; */
+    width: 200px;
+    overflow: hidden;
+
+    z-index: 2;
+
+    transform: translateX(-105%);
+
+    transition: 300ms;
+}
+
+nav.visible {
+    transform: translateX(0);
+}
+
+a {
+    display: block;
+    padding: 15px 0px;
+    text-decoration: none;
+    /* color: #3fffd2; */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+nav li:first-child {
+    margin-top: 7rem;
+}
+
+@media screen and (max-width: 500px) {
+    nav {
+        width: 100vw;
+    }
+}
+
+.nav-links {
+    margin-top: 8rem;
+    margin-left: 0;
+
+    font-size: 18pt;
+}
+
+a:hover {
+    color: #b08efb;
+}

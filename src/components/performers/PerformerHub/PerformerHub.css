@@ -1,0 +1,17 @@
+.primary {
+    background-color: #cad3fc;
+    color: #19151f;
+
+    font-size: 14pt;
+    font-weight: 600;
+    border-radius: 7px;
+
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.primary:hover {
+    background-color: #4b3b63;
+    color: #cad3fc;
+    font-family: 'Red Hat Display', sans-serif;
+
+}
