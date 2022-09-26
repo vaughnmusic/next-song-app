@@ -27,14 +27,14 @@ export default function PerformerHub() {
     } else {
         return (
             <div>
+                {playlists.map(playlist => (
+                    <p>{playlist.name}</p>
+                ))}
                 <Link to="/create">
                     <button className='primary'>
                         + Start A New Show
                     </button>
                 </Link>
-                {playlists.map(playlist => (
-                    <p>{playlist.name}</p>
-                ))}
             </div>
         )
     }

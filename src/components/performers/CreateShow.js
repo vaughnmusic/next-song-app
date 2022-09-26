@@ -64,7 +64,6 @@ function NewShowForm() {
     function handleFormSubmit(e) {
         e.preventDefault();
 
-
         submitNewShow(formData.venue, playlists[selectedPlaylistIndex].id, formData.date)
             .then(() => {
                 console.log("show was created")
@@ -72,7 +71,9 @@ function NewShowForm() {
 
                 navigate('/performer')
             })
-            .catch
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
     function getPlaylists() {

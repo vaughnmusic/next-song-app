@@ -1,0 +1,35 @@
+.song-card {
+    display: flex;
+    background-color: white;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.song-card .picture-frame {
+    height: 100px;
+    width: 100px;
+    min-width: 100px;
+    overflow: hidden;
+}
+
+.song-card img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.song-card .song-detail {
+    padding: 0rem 1rem;
+
+    /* display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 1rem; */
+
+}
+
+.song-card h3,
+.song-card p {
+    margin: 0;
+}

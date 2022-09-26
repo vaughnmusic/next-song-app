@@ -1,77 +1,78 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { getPlaylistSongs, submitNewRequest } from '../../../services/http.service';
+import './SongCard.css'
+import { getGigById, getPlaylistSongs, submitNewRequest } from '../../../services/http.service';
 
 export default function SongSelector() {
-    return (
-        <div>SongSelector</div>
-    )
-}
 
-function PickSongRequest() {
-
-    const [userType, setuserType] = useState(false);
+    // const [userType, setuserType] = useState(false);
+    const [playlistId, setPlaylistId] = useState();
     const [playlist, setPlaylist] = useState([]);
-    const [formData, setFormData] = useState({
-        showId: '',
-        venue: '',
-        playlist_id: '',
-    });
 
     // somehow get the data out of the paramaters of the url
-    const gigId = "7ctf3QMZ96SDPD4nzjHwb1"
+    const gigId = "c7e65216-3dad-11ed-bd1e-c93bcd52340c"
 
-    const [selectedPlaylistIndex, setSelectedPlaylistIndex] = useState(0)
-
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
-        getPlaylist()
+        getGigData();
+        // getPlaylist()
     }, [])
 
-    function handleFormSubmit(e) {
-        e.preventDefault();
+    useEffect(() => {
+        if (playlistId !== undefined) {
+            getPlaylist(playlistId);
+        }
+    }, [playlistId]);
 
-        // '7ctf3QMZ96SDPD4nzjHwb1'
+    function getGigData() {
 
-        // 'create the song request' via http POST request
-        submitNewRequest(gigId, song_id)
-            .then(() => {
-                console.log("Song request was successfully submitted")
-                // navigate('/audience')
+        getGigById(gigId)
+            .then(response => {
+                console.log(response.data)
+                setPlaylistId(response.data.spotify_playlist_id)
             })
             .catch()
-        // setFormData(formData.venue, playlist[selectedPlaylistIndex].id, formData.date)
     }
 
-    function getPlaylist() {
-        getPlaylistSongs()
+    function getPlaylist(playlistId) {
+
+        getPlaylistSongs(playlistId)
             .then(response => {
                 setPlaylist(response.data.items)
-                console.log(response.data.items)
             })
             .catch()
     }
 
     return (
-        <form onSubmit={handleFormSubmit} >
+        <div>
             <h2>Choose Song to Request</h2>
             <div className='song-container' >
-                {playlist.map((songs, i) => (
-                    <div key={i}
-                        className={`song ${selectedPlaylistIndex === i ? 'selected' : ''}`}
-                        onClick={() => setSelectedPlaylistIndex(i)}
-                    >
-                        {songs.name}
-                    </div>
+                {playlist.map((song, i) => (
+                    <Song key={song.track.id}
+                        {...song.track}
+                        albumUrl={song.track?.album?.images[0]?.url}
+                    />
                 ))}
             </div>
 
-            <button type='submit'
-                onSubmit={handleFormSubmit}
-                className='create-request-button' >
-                Send Song Request
-            </button>
-        </form>
+        </div>
+    )
+}
+
+
+function Song({ id, albumUrl, name, artists }) {
+    return (
+        <div className={`song-card`} >
+            <div className='picture-frame'>
+                <img src={albumUrl} alt={name + ' album art'} />
+            </div>
+
+            <div className='song-detail'>
+                <h3>{name}</h3>
+                <p>{artists.map(artist => artist.name).join(", ")}</p>
+            </div>
+
+        </div>
     )
 }

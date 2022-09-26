@@ -28,7 +28,7 @@ h2 {
     margin-top: 20px;
 
     height: 20rem;
-    width: 25rem;
+    width: 20rem;
 
     text-align: center;
 
@@ -61,18 +61,19 @@ h2 {
 
     border-radius: 5px;
     margin-bottom: 20px;
+    background-color: #cad3fc;
 
 }
 
 .create-show-button {
 
     bottom: 14px;
-    width: 50%;
+    width: 20rem;
     height: 45px;
 
 
 
-    background-color: #cad3fc;
+    background-color: #b08efb;
     font-size: 16pt;
 
     font-family: 'Red Hat Display', sans-serif;
@@ -82,7 +83,7 @@ h2 {
 
 .create-show-button:hover {
 
-    background-color: #b08efb;
+    background-color: #9566fb;
     cursor: pointer;
 }
 

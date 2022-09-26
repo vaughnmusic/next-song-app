@@ -23,6 +23,7 @@ export function getPlaylistSongs(playlistId) {
         }
     });
 }
+
 export function getCurrentUsersPlaylists() {
     return axios.get(`${SPOTIFY_URL}/me/playlists`, {
         headers: {
@@ -50,6 +51,10 @@ export function searchArtists(artistQ) {
         }
     });
 }
+
+export function getGigById(gigId) {
+    return axios.get(`${NEXT_SONG_URL}/gigs/${gigId}`);
+};
 
 export function submitNewShow(venue, playlistId) {
     return axios.post(`${NEXT_SONG_URL}/gigs`, {
