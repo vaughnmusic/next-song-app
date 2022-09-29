@@ -1,17 +1,23 @@
+:root {
+  --lightest: #cad3fc;
+
+  --purple: #b08efb;
+
+  /* used for text and nav bar */
+  --darkest: #19151f;
+
+  --gradient-bottom: #4741bf;
+}
+
 body {
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
-  /* NEED TO DECIDE WEATHER TO USE DARK OR LIGHT COLOR GRADIENT CHOICES */
-  /* background-image: linear-gradient(#3c3b3f, #605c3c); */
   background-image: linear-gradient(to top, #4741bf, #b08efb);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  /* min-height: 100vh; */
 }
 
 code {
@@ -29,7 +35,7 @@ code {
   /* current margin setting looks good on full screen but not on mobile */
   margin-left: -30px;
 
-  background-color: #cad3fc;
+  background-color: var(--lightest);
 
   font-size: 20pt;
   border-radius: 5px;
@@ -52,15 +58,13 @@ code {
 .burger {
   font-size: 38pt;
   border: none;
-  color: #cad3fc;
+  color: var(--lightest);
   background-color: #b18efb00;
 }
 
 .burger:hover {
   cursor: pointer;
   background-color: #b18efb00;
-  color: #cad3fc;
+  color: var(--lightest);
   font-size: 40pt;
 }
-
-/* @import url('https://fonts.googleapis.com/css?family=Josefin+Sans'); */

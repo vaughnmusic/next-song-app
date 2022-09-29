@@ -5,3 +5,19 @@
     font-family: 'Mukta', sans-serif;
     font-family: 'Shadows Into Light', cursive;
 }
+
+footer {
+    position: fixed;
+    background-color: var(--darkest);
+    color: var(--lightest);
+    font-family: 'Red Hat Display', sans-serif;
+    text-align: center;
+    font-size: 12pt;
+
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 8px;
+    text-align: center;
+    height: 28px
+}
