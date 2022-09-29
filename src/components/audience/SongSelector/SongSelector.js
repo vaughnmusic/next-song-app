@@ -1,44 +1,50 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './SongCard.css'
 import { getGigById, getPlaylistSongs, submitNewRequest } from '../../../services/http.service';
 
 export default function SongSelector() {
 
+    // 1
+    const { gigId } = useParams();
     // const [userType, setuserType] = useState(false);
     const [playlistId, setPlaylistId] = useState();
+    // 1
     const [playlist, setPlaylist] = useState([]);
 
     // somehow get the data out of the paramaters of the url
-    const gigId = "c7e65216-3dad-11ed-bd1e-c93bcd52340c"
 
     // const navigate = useNavigate();
 
+    // 2
     useEffect(() => {
         getGigData();
-        // getPlaylist()
     }, [])
 
+    // 5
     useEffect(() => {
         if (playlistId !== undefined) {
             getPlaylist(playlistId);
         }
     }, [playlistId]);
 
+    // 3
     function getGigData() {
-
         getGigById(gigId)
             .then(response => {
                 console.log(response.data)
-                setPlaylistId(response.data.spotify_playlist_id)
+                // 4
+                setPlaylistId(response.data.spotify_playlist_id) // 64576e5r475367i
             })
             .catch()
     }
 
+    // 6
     function getPlaylist(playlistId) {
 
         getPlaylistSongs(playlistId)
             .then(response => {
+                // 7
                 setPlaylist(response.data.items)
             })
             .catch()
@@ -48,9 +54,11 @@ export default function SongSelector() {
         <div>
             <h2>Choose Song to Request</h2>
             <div className='song-container' >
+                {/* 8 */}
                 {playlist.map((song, i) => (
                     <Song key={song.track.id}
                         {...song.track}
+                        gigId={gigId}
                         albumUrl={song.track?.album?.images[0]?.url}
                     />
                 ))}
@@ -60,10 +68,20 @@ export default function SongSelector() {
     )
 }
 
+function Song({ id, albumUrl, name, artists, gigId }) {
 
-function Song({ id, albumUrl, name, artists }) {
+    function handleSongClicked() {
+        // send a POST to our API to request this song for a given gig
+        submitNewRequest(gigId, id)
+            .then((response) => {
+                alert("Your song request was submitted!")
+            }).catch((err) => {
+                console.error(err)
+            });
+    }
+
     return (
-        <div className={`song-card`} >
+        <div className={`song-card`} onClick={handleSongClicked} >
             <div className='picture-frame'>
                 <img src={albumUrl} alt={name + ' album art'} />
             </div>

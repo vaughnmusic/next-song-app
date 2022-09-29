@@ -62,11 +62,8 @@ export function submitNewShow(venue, playlistId) {
     });
 };
 
-// this is not completely correct
 export function submitNewRequest(gigId, songId) {
-    return axios.post(`${NEXT_SONG_URL}/request`, {
-        gigId, songId
-    });
+    return axios.post(`${NEXT_SONG_URL}/requests`, { gigId, songId });
 };
 
 
