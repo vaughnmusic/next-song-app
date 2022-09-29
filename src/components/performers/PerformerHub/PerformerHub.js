@@ -6,35 +6,40 @@ import './PerformerHub.css'
 
 export default function PerformerHub() {
 
-    const [playlists, setPlaylists] = useState();
+    // this is the fetch data 'structure'
+    // we need to get gigs (by performer/user id)
+    // TODO: playlists -> gigs
 
-    useEffect(() => {
-        getData()
-    }, [])
+    // const [playlists, setPlaylists] = useState();
+
+    // useEffect(() => {
+    //     getData()
+    // }, [])
 
 
-    function getData() {
-        getCurrentUsersPlaylists()
-            .then(response => {
-                setPlaylists(response.data.items)
-                console.log(response.data)
-            })
-            .catch()
-    }
+    // function getData() {
+    //     getCurrentUsersPlaylists()
+    //         .then(response => {
+    //             setPlaylists(response.data.items)
+    //             console.log(response.data)
+    //         })
+    //         .catch()
+    // }
 
     if (playlists === undefined) {
         return <LoadingAnimation />
     } else {
         return (
             <div>
-                {playlists.map(playlist => (
-                    <p>{playlist.name}</p>
-                ))}
                 <Link to="/create">
                     <button className='primary'>
                         + Start A New Show
                     </button>
                 </Link>
+
+                {/* show this users gigs here */}
+                {/* gigs.map -> something with a Link */}
+
             </div>
         )
     }

@@ -5,13 +5,13 @@ import './AudienceHub.css';
 // import LoadingAnimation from '../../LoadingAnimation/LoadingAnimation';
 
 export default function AudienceHub() {
-    ///////
+
     const [playlistSongs, setPlaylistSongs] = useState([]);
 
     useEffect(() => {
         getData()
     }, [])
-    ///////
+
     function getData() {
         getPlaylistSongs()
             .then(response => {
@@ -20,8 +20,6 @@ export default function AudienceHub() {
             })
             .catch()
     }
-    ///////
-
 
     return (
         <div>
