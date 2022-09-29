@@ -12,6 +12,7 @@ import PerformerHub from './components/performers/PerformerHub/PerformerHub';
 import AudienceHub from './components/audience/AudienceHub';
 import CreateShow from './components/performers/CreateShow';
 import SongSelector from './components/audience/SongSelector/SongSelector';
+import NotFound from './components/404Page/NotFound';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -31,12 +32,11 @@ root.render(
         {/* <Route path='/performer/show/:showId' element={<ShowDashboard />} /> */}
         <Route path='/requests' element={<RequestPage />} />
 
-
         <Route path='/audience' element={<AudienceHub />} />
-        <Route path='/audience/gig/:gigId' element={<SongSelector />} />
+        <Route path='/audience/gigs/:gigId' element={<SongSelector />} />
         {/* requests page probably not needed */}
-
       </Route>
+      <Route path='*' element={<NotFound />} />
     </Routes>
   </BrowserRouter>
   // </React.StrictMode>

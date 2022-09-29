@@ -73,7 +73,7 @@ function NewShowForm() {
             })
             .catch((err) => {
                 console.error(err);
-            });
+            })
     }
 
     function getPlaylists() {
