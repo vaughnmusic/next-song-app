@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSpotify } from '../../hooks/useSpotify';
 import './HomePage.css'
 import { getPlaylist } from '../../services/http.service'
+import crowdMain from '../../images/crowdMain.png';
 
 export default function HomePage() {
 
@@ -34,8 +35,7 @@ export default function HomePage() {
     return (
 
         <div>
-            <h1 className='main-title' >Next Song</h1>
-
+            <h1>Next Song</h1>
         </div>
 
     )
