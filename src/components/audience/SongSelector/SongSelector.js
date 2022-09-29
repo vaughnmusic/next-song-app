@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './SongCard.css'
 import { getGigById, getPlaylistSongs, submitNewRequest } from '../../../services/http.service';
 
@@ -9,14 +9,10 @@ export default function SongSelector() {
     const [playlistId, setPlaylistId] = useState();
     const [playlist, setPlaylist] = useState([]);
 
-    // somehow get the data out of the paramaters of the url
-    const gigId = "c7e65216-3dad-11ed-bd1e-c93bcd52340c"
-
-    // const navigate = useNavigate();
+    let { gigId } = useParams();
 
     useEffect(() => {
         getGigData();
-        // getPlaylist()
     }, [])
 
     useEffect(() => {
@@ -46,12 +42,14 @@ export default function SongSelector() {
 
     return (
         <div>
-            <h2>Choose Song to Request</h2>
+            <h2 className='song-select-title' >-select a song to make your request-</h2>
             <div className='song-container' >
                 {playlist.map((song, i) => (
                     <Song key={song.track.id}
                         {...song.track}
+                        gigId={gigId}
                         albumUrl={song.track?.album?.images[0]?.url}
+                        className="playlist"
                     />
                 ))}
             </div>
@@ -61,9 +59,28 @@ export default function SongSelector() {
 }
 
 
-function Song({ id, albumUrl, name, artists }) {
+function Song({ id, albumUrl, name, artists, gigId }) {
+
+    const navigate = useNavigate();
+
+    function sendRequest() {
+        console.log(gigId, id)
+        submitNewRequest(gigId, id)
+            .then(() => {
+                console.log("show was created")
+
+                navigate('/audience')
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+
+    }
+
     return (
-        <div className={`song-card`} >
+        <div className={`song-card`}
+            onClick={() => sendRequest()}
+        >
             <div className='picture-frame'>
                 <img src={albumUrl} alt={name + ' album art'} />
             </div>
@@ -72,7 +89,6 @@ function Song({ id, albumUrl, name, artists }) {
                 <h3>{name}</h3>
                 <p>{artists.map(artist => artist.name).join(", ")}</p>
             </div>
-
         </div>
     )
 }

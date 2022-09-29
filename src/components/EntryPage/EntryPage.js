@@ -19,14 +19,14 @@ export default function EntryPage() {
     function handleAudienceClicked() {
         //save option in local storage
         setUserType('audience');
-        //navtgate to /audience 
+        //navigate to /audience 
         navigate('/audience');
     }
 
     function handlePerformerClicked() {
         //save option in local storage
         setUserType('performer');
-        //navtgate to /performer 
+        //navigate to /performer 
         navigate('/performer');
 
     }
