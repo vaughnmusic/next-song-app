@@ -5,9 +5,6 @@ import { getGigById, getPlaylistSongs, submitNewRequest } from '../../../service
 
 export default function SongSelector() {
 
-    // const [userType, setuserType] = useState(false);
-    const [playlistId, setPlaylistId] = useState();
-    const [playlist, setPlaylist] = useState([]);
 
     let { gigId } = useParams();
 
@@ -22,13 +19,14 @@ export default function SongSelector() {
     }, [playlistId]);
 
     function getGigData() {
-
         getGigById(gigId)
             .then(response => {
                 console.log(response.data)
-                setPlaylistId(response.data.spotify_playlist_id)
+                setPlaylistId(response.data.spotify_playlist_id) // 64576e5r475367i
             })
-            .catch()
+            .catch((err) => {
+                console.error(err)
+            })
     }
 
     function getPlaylist(playlistId) {
@@ -37,7 +35,9 @@ export default function SongSelector() {
             .then(response => {
                 setPlaylist(response.data.items)
             })
-            .catch()
+            .catch((err) => {
+                console.error(err)
+            })
     }
 
     return (
@@ -64,10 +64,10 @@ function Song({ id, albumUrl, name, artists, gigId }) {
     const navigate = useNavigate();
 
     function sendRequest() {
-        console.log(gigId, id)
+
         submitNewRequest(gigId, id)
             .then(() => {
-                console.log("show was created")
+                console.log("song request submitted")
 
                 navigate('/audience')
             })
@@ -79,7 +79,7 @@ function Song({ id, albumUrl, name, artists, gigId }) {
 
     return (
         <div className={`song-card`}
-            onClick={() => sendRequest()}
+            onClick={sendRequest}
         >
             <div className='picture-frame'>
                 <img src={albumUrl} alt={name + ' album art'} />

@@ -62,15 +62,32 @@ export function submitNewShow(venue, playlistId) {
     });
 };
 
-// this might not be completely correct
 export function submitNewRequest(gigId, songId) {
     return axios.post(`${NEXT_SONG_URL}/requests`, {
         gigId, songId
     });
 };
 
+export function getSongRequests(gigId) {
+    // get requests from our api '/api/requests/:gigId'
+    return axios.get(`${NEXT_SONG_URL}/requests/${gigId}`)
+}
+
 export function getCurrentGigs() {
     return axios.get(`${NEXT_SONG_URL}/gigs`);
 }
 
 
+/**
+ * 
+ * @param {string[]} songIds array of spotify song ids
+ * @returns 
+ */
+export function getTracks(songIds) {
+    return axios.get(`${SPOTIFY_URL}/tracks`, {
+        headers: { Authorization: `Bearer ${getToken()}` },
+        params: {
+            ids: songIds.join()
+        }
+    });
+}

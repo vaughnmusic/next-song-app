@@ -8,22 +8,16 @@ import './AudienceHub.css';
 export default function AudienceHub() {
 
     const [gigs, setGigs] = useState([]);
-    const [selectedGigIndex, setSelectedGigIndex] = useState(0)
 
-    const navigate = useNavigate();
-
-    // doesn't need dependency array?
     useEffect(() => {
         getGigs()
-    })
+    }, [])
 
     function getGigs() {
         getCurrentGigs()
             .then(response => {
                 setGigs(response.data.items)
                 console.log(response.data.items)
-
-                navigate('/audience/gigs/:gigId')
             })
             .catch()
     }

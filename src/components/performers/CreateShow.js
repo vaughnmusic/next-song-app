@@ -135,26 +135,3 @@ function NewShowForm() {
     )
 }
 
-
-
-
-// let key = {
-//     name: 'C major',
-//     flats: [],
-//     sharps: []
-// }
-
-// let key2 = {
-//     name: 'Bb major',
-//     flats: [
-//         'Bb',
-//         'Eb'
-//     ],
-//     sharps: []
-// }
-
-
-// key2 // { name: 'Bb major', flats: ['Bb', 'Eb'], sharps: []}
-// key2.flats // ['Bb', 'Eb']
-// key2.flats[0] // 'Bb'
-// key2.flats[1] // 'Eb'

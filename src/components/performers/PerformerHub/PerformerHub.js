@@ -6,32 +6,32 @@ import './PerformerHub.css'
 
 export default function PerformerHub() {
 
-    const [playlists, setPlaylists] = useState();
+    // const [playlists, setPlaylists] = useState();
 
-    useEffect(() => {
-        getData()
-    }, [])
+    // useEffect(() => {
+    //     getData()
+    // }, [])
 
 
-    function getData() {
-        getCurrentUsersPlaylists()
-            .then(response => {
-                setPlaylists(response.data.items)
-                console.log(response.data)
-            })
-            .catch()
-    }
+    // function getData() {
+    //     getCurrentUsersPlaylists()
+    //         .then(response => {
+    //             setPlaylists(response.data.items)
+    //             console.log(response.data)
+    //         })
+    //         .catch()
+    // }
 
     if (playlists === undefined) {
         return <LoadingAnimation />
     } else {
         return (
             <div>
-                <button className='primary'>
-                    create a show
-                    <Link to="/create">
-                    </Link>
-                </button>
+                <Link to="/create">
+                    <button className='primary'>
+                        create a show
+                    </button>
+                </Link>
                 {playlists.map(playlist => (
                     <p>{playlist.name}</p>
                 ))}
