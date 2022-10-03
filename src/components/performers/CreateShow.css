@@ -3,30 +3,31 @@ h2 {
     color: #cad3fc;
     font-size: 32pt;
     font-family: 'Red Hat Display', sans-serif;
+
+    margin-bottom: 0px;
 }
 
 .create-show-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     background-color: #19151f;
 
     padding: 20px;
     border-radius: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    margin: auto;
+
+    max-width: 600px;
 }
 
-
-
 .playlist-container {
-    border: solid 3px #b08efb;
-    background-color: #cad3fc;
+    background-color: var(--lightest);
 
     border-radius: 5px;
     margin-bottom: 20px;
-    margin-top: 20px;
-
     height: 20rem;
     width: 20rem;
 
@@ -37,7 +38,7 @@ h2 {
 
     overflow-y: auto;
 
-    font-size: 16pt;
+    font-size: 18pt;
 }
 
 .create-show-inputs {
@@ -46,7 +47,7 @@ h2 {
     justify-content: center;
     margin: auto;
 
-    width: 23rem;
+
     height: 20rem;
 }
 
