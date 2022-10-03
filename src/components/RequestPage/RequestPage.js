@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './RequestPage.css';
 import { getSongRequests, getTracks } from '../../services/http.service';
+import { useParams } from 'react-router-dom';
 
 export default function RequestPage() {
 
@@ -19,22 +20,22 @@ export default function RequestPage() {
     // 5
     useEffect(() => {
         if (requests !== undefined) {
-           // exe 6 here
-           getSongData()
+            // exe 6 here
+            getSongData()
         }
     }, [requests]);
 
     // 3 - send http GET request
-    function getRequests(){
+    function getRequests() {
         getSongRequests(gigId)
-            .then (response =>{
+            .then(response => {
                 // 4
                 setRequests(response.data)
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log('there was a problem getting your requests')
                 alert("There was a problem loading the song request. Try again.")
             });
-    } 
+    }
 
     // 6 
     function getSongData() {
@@ -59,7 +60,7 @@ export default function RequestPage() {
                     />
                 ))}
             </div>
-            
+
         </div>
     )
 }
