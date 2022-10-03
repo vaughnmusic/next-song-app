@@ -7,11 +7,11 @@ import { faFaceFrownOpen } from '@fortawesome/free-solid-svg-icons'
 
 export default function NotFound() {
     return (
-        <div>
+        <div className='notfound-container' >
             <FontAwesomeIcon className='sad-face' icon={faFaceFrownOpen} />
-            <h3>Oops! This Page Doesn't Exist.</h3>
+            <h3 className='oops' >Oops! This Page Doesn't Exist.</h3>
             <p>
-                <Link to="/">Back to Home</Link>
+                <Link className='back-home' to="/">Back to Home</Link>
             </p>
         </div>
     )
