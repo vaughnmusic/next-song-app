@@ -30,7 +30,7 @@ root.render(
         <Route path='/create' element={<CreateShow />} />
         <Route path='/performer/create' element={<CreateShow />} />
         {/* <Route path='/performer/show/:showId' element={<ShowDashboard />} /> */}
-        <Route path='/requests' element={<RequestPage />} />
+        <Route path='/requests/:gigId' element={<RequestPage />} />
 
         <Route path='/audience' element={<AudienceHub />} />
         <Route path='/audience/gigs/:gigId' element={<SongSelector />} />
