@@ -3,38 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { getCurrentUsersPlaylists } from '../../services/http.service';
 import { submitNewShow } from '../../services/http.service';
 import { Link, useNavigate } from 'react-router-dom';
-// import LoadingAnimation from '../../LoadingAnimation/LoadingAnimation';
 // import { Route } from 'react-router-dom';
 
 export default function CreateShow() {
-
-    // function handleFormSubmit(e) {
-
-    //     e.preventDefault();
-
-    //     http.postNewShow(userId, formData.showId, formData.playlistId, date)
-    //         .then((response) => {
-    //             // setFormData(response.data);
-    //             window.location.reload();
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         })
-    // }
-
-
-    // use for loading animations----
-    // if (playlists === undefined) {
-    //     return <LoadingAnimation />
-    // } else {
-    //     return (
-    //         <div>
-    //             {playlists.map(playlist => (
-    //                 <p>{playlist.name}</p>
-    //             ))}
-    //         </div>
-    //     )
-    // }
 
     return (
         <div>
@@ -67,8 +38,6 @@ function NewShowForm() {
         submitNewShow(formData.venue, playlists[selectedPlaylistIndex].id, formData.date)
             .then(() => {
                 console.log("show was created")
-                // links back to performerHub -- not sure if this works yet
-
                 navigate('/performer')
             })
             .catch((err) => {
@@ -86,21 +55,6 @@ function NewShowForm() {
             })
             .catch()
     }
-
-    function newShowPlaylist() {
-        // getAllSongs()
-        //     .then(response => {
-        //         setnewShowPlaylist(response.data.items)
-
-
-        //     }
-        //     )
-    }
-
-    // function handleFormSubmit(e) {
-    //     e.preventDefault();
-    //     setuserType(true);
-    // }
 
     return (
         <form onSubmit={handleFormSubmit} className='create-show-form' >

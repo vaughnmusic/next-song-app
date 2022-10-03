@@ -7,6 +7,8 @@ export default function SongSelector() {
 
 
     let { gigId } = useParams();
+    const [playlistId, setPlaylistId] = useState()
+    const [playlist, setPlaylist] = useState([])
 
     useEffect(() => {
         getGigData();

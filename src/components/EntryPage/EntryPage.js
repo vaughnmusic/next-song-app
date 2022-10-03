@@ -35,6 +35,10 @@ export default function EntryPage() {
         <div>
             <h2 className='pick-path-title' >Who are you?</h2>
             <div className='entry-images-container'>
+                <div className='user-choice' onClick={handleAudienceClicked} >
+                    <img className='crowd' src={crowd} />
+                    <h3>Audience</h3>
+                </div>
 
                 <div className='user-choice' onClick={handlePerformerClicked} >
                     <img
@@ -44,10 +48,6 @@ export default function EntryPage() {
                     <h3>Performer</h3>
                 </div>
 
-                <div className='user-choice' onClick={handleAudienceClicked} >
-                    <img className='crowd' src={crowd} />
-                    <h3>Audience</h3>
-                </div>
 
             </div>
         </div>
