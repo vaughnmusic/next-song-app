@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getCurrentGigs } from '../../services/http.service';
 import './AudienceHub.css';
 
@@ -16,8 +16,7 @@ export default function AudienceHub() {
     function getGigs() {
         getCurrentGigs()
             .then(response => {
-                setGigs(response.data.items)
-                console.log(response.data.items)
+                setGigs(response.data)
             })
             .catch()
     }
@@ -29,15 +28,12 @@ export default function AudienceHub() {
             </div>
 
             <div className='gig-container' >
-                {gigs.map((gigs, i) => (
-                    <div key={i}
-                        className={`gig ${selectedGigIndex === i ? 'selected' : ''}`}
-                        onClick={() => setSelectedGigIndex(i)}
-                    >
-                        {/* not sure if this part is correct */}
-                        {gigs.items}
-                        {/* {gigs.spotify_playlist_id} */}
-                    </div>
+                {gigs.map((gig, i) => (
+                    <Link to={'gigs/' + gig.id} key={i}>
+                        <div className="gig">
+                            {gig.location}
+                        </div>
+                    </Link>
                 ))}
             </div>
         </div>
