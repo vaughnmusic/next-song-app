@@ -67,11 +67,14 @@ function Song({ id, albumUrl, name, artists, gigId }) {
 
     function sendRequest() {
 
-        submitNewRequest(gigId, id)
+        let songId = id;
+
+        submitNewRequest({ gigId, songId })
             .then(() => {
                 console.log("song request submitted")
 
                 navigate('/audience')
+
             })
             .catch((err) => {
                 console.error(err);

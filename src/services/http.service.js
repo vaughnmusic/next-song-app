@@ -62,7 +62,7 @@ export function submitNewShow(venue, playlistId) {
     });
 };
 
-export function submitNewRequest(gigId, songId) {
+export function submitNewRequest({ gigId, songId }) {
     return axios.post(`${NEXT_SONG_URL}/requests`, {
         gigId, songId
     });

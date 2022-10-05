@@ -19,7 +19,7 @@ export default function RequestPage() {
 
     // 5
     useEffect(() => {
-        if (requests !== undefined) {
+        if (requests !== []) {
             // exe 6 here
             getSongData()
         }
@@ -43,22 +43,24 @@ export default function RequestPage() {
             .then(response => {
                 // 7
                 setSongs(response.data.tracks)
+                console.log(response.data)
             })
             .catch(err => console.error(err))
     }
 
     return (
         <div>
-            {/* map requests => something visual and nice */}
             <div className='song-container' >
                 {/* 8 */}
+
                 {songs.map((song, i) => (
-                    <Request key={song.track.id}
-                        {...song.track}
+                    <Request key={song.id}
+                        {...song}
                         gigId={gigId}
-                        albumUrl={song.track?.album?.images[0]?.url}
+                        albumUrl={song.album?.images[0]?.url}
                     />
                 ))}
+
             </div>
 
         </div>

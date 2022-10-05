@@ -15,6 +15,7 @@ import SongSelector from './components/audience/SongSelector/SongSelector';
 import NotFound from './components/404Page/NotFound';
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
@@ -31,6 +32,7 @@ root.render(
         <Route path='/performer/create' element={<CreateShow />} />
         {/* <Route path='/performer/show/:showId' element={<ShowDashboard />} /> */}
         <Route path='/requests/:gigId' element={<RequestPage />} />
+
 
         <Route path='/audience' element={<AudienceHub />} />
         <Route path='/audience/gigs/:gigId' element={<SongSelector />} />
